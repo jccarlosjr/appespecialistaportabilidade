@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruções do Aplicativo de Simulação de Portabilidade Consignado</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #34495e;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #2980b9;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 5px solid #2980b9;
+            padding-left: 10px;
+        }
+
+        p, ul, li {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #c0392b;
+            font-size: 14px;
+        }
+
+        .images img {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .images p {
+            text-align: center;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                color: #000;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+            }
+
+            h1, h2 {
+                color: #000;
+                border-color: #000;
+            }
+
+            .images img {
+                width: 100%;
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+        #img-1{
+            max-height: 250px;
+            max-width: 250px;
+        }
+        .img-2{
+            min-width: 800px;
+        }
+        #img-3{
+            width: 250px;
+            height: 720px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Instruções Para Administração do App Especialista em Portabilidade</h1>
+        
+        <h2>Cadastro de Regras e Tabelas</h2>
+        <p><strong>Bancos Pré-Cadastrados:</strong></p>
+        <ul>
+            <li>69 - Crefisa</li>
+            <li>12 - Imbursa</li>
+            <li>29 - Itaú Consignado</li>
+            <li>33 - Olé Consignado</li>
+            <li>623 - PAN</li>
+            <li>329 - Happy Consig</li>
+            <li>935 - Facta Financeira</li>
+            <li>707 - Daycoval</li>
+            <li>626 - C6 Consignado</li>
+            <li>394 - Bradesco Promotora</li>
+            <li>318 - BMG</li>
+            <li>41 - Banrisul</li>
+        </ul>
+        <p>Para um banco ser exibido no cálculo é preciso que sejam cadastrados ao menos 1 tabela de refinanciamento e uma regra operacional geral.</p>
+
+        <div class="images">
+            <img id="img-1" src="https://i.imgur.com/ucH8JMS.png" alt="Exemplo de Cadastro de Regras e Tabelas">
+            <p>Exemplo de Cadastro de Regras e Tabelas</p>
+        </div>
+
+        <h2>Cadastro de Tabelas</h2>
+        <p><strong>URL de Acesso:</strong> <code>/tabelas/</code></p>
+        <ul>
+            <li><strong>Operação:</strong> Somente a opção de Refin da Portabilidade está disponível.</li>
+            <li><strong>Tabela:</strong> Campo de texto limitado a 30 caracteres.</li>
+            <li><strong>Taxa:</strong> Número real separado por vírgula ou ponto (Ex.: 1,66).</li>
+            <li><strong>Banco:</strong> Um dos bancos cadastrados precisa ser selecionado.</li>
+            <li><strong>Coeficiente:</strong> Número real separado por vírgula ou ponto (Ex.: 0,02324).</li>
+        </ul>
+        
+        <div class="images">
+            <p>Exemplo de Cadastro de Tabelas</p>
+            <img class="img-2" src="https://i.imgur.com/x0TNZHI.png.png">
+        </div>
+
+        <div class="images">
+            <img class="img-2" src="https://i.imgur.com/tMMJQ5T.png">
+        </div>
+        
+        <p>Após salvar, a tabela ficará disponível para edição ou exclusão na tela anterior. O campo de filtragem pode ser utilizado para filtrar as tabelas por banco.</p>
+
+        <h2>Cadastro de Regras Operacionais</h2>
+        <p><strong>URL de Acesso:</strong> <code>/regras/</code></p>
+        <ul>
+            <li><strong>Nome:</strong> Campo de texto limitado a 30 caracteres.</li>
+            <li><strong>Banco:</strong> Um dos bancos cadastrados precisa ser selecionado.</li>
+            <li><strong>IFs Proibidas:</strong> Cadastrar as IFs proibidas, incluindo o código da própria instituição financeira para impedir os usuários de tentar portar o banco para ele próprio. O campo espera números inteiros dentro de colchetes e separados por vírgulas, sem zeros à esquerda (Ex.: [29, 104, 33] para os bancos 029-Itaú, 104-CEF, 033-Santander).</li>
+            <li><strong>Idade Máxima:</strong> Número inteiro.</li>
+            <li><strong>Parcela Mínima:</strong> Zero (0) caso não possua regra, ou um número real separado por vírgula ou ponto (Ex.: 100,00).</li>
+            <li><strong>Troco Mínimo:</strong> Zero (0) caso não possua regra, ou um número real separado por vírgula ou ponto (Ex.: 50,00).</li>
+            <li><strong>Saldo Mínimo:</strong> Zero (0) caso não possua regra, ou um número real separado por vírgula ou ponto (Ex.: 100,00).</li>
+            <li><strong>Valor Financiado Mínimo:</strong> Zero (0) caso não possua regra, ou um número real separado por vírgula ou ponto (Ex.: 100,00).</li>
+            <li><strong>Taxa Mínima:</strong> Número real separado por vírgula ou ponto (Ex.: 1,35).</li>
+        </ul>
+
+        <div class="images">
+            <img class="img-2" src="https://i.imgur.com/AW3VOjU.png" alt="Exemplo de Cadastro de Regras de Parcelas Pagas">
+            <p>Exemplo de Cadastro de Regras Operacionais</p>
+        </div>
+
+        
+
+        <h2>Cadastro de Regras de Parcelas Pagas</h2>
+        <p><strong>URL de Acesso:</strong> <code>/regras_pagas/</code></p>
+        <ul>
+            <li><strong>Nome:</strong> Campo de texto limitado a 30 caracteres.</li>
+            <li><strong>Banco:</strong> Um dos bancos cadastrados precisa ser selecionado.</li>
+            <li><strong>Quantidade Mínima de Pagas:</strong> Número inteiro com o valor de parcelas para verificação.</li>
+            <li><strong>IFs Originadoras:</strong> O campo espera números inteiros dentro de colchetes e separados por vírgulas, sem zeros à esquerda (Ex.: [623, 29, 626, 336] para os bancos 623-PAN, 029-Itaú, 626/336-C6).</li>
+        </ul>
+        <p>Caso um banco cadastrado não tenha uma regra de parcelas pagas, não fará a verificação. É obrigatório apenas uma tabela e uma regra operacional geral para o banco ser exibido no cálculo.</p>
+
+        <div class="images">
+            <img class="img-2" src="https://i.imgur.com/8iAepe5.png" alt="Exemplo de Cadastro de Regras de Parcelas Pagas">
+            <p>Exemplo de Cadastro de Regras de Parcelas Pagas</p>
+        </div>
+
+        <h2>Cadastro de Regras de Benefício</h2>
+        <p><strong>URL de Acesso:</strong> <code>/regras_beneficio/</code></p>
+        <ul>
+            <li><strong>Nome:</strong> Campo de texto limitado a 30 caracteres.</li>
+            <li><strong>Banco:</strong> Um dos bancos cadastrados precisa ser selecionado.</li>
+            <li><strong>Idade Mínima:</strong> um número inteiro, com a idade máxima exigida para operar.</li>
+            <li><strong>Idade Máxima:</strong> Campo numérico com código da instituição financeira sem zeros à esquerda (Ex.: [29] para Itaú).</li>
+            <li><strong>Espécies:</strong> O campo espera números inteiros dentro de colchetes e separados por vírgulas, sem zeros à esquerda (Ex.: [32, 92] para as espécies por invalidez comuns).</li>
+        </ul>
+
+        <div class="images">
+            <img class="img-2" src="https://i.imgur.com/cQqHqgb.png" alt="Exemplo de Cadastro de Regras de Benefício">
+            <p>Exemplo de Cadastro de Regras de Benefício</p>
+        </div>
+
+
+        <h2>Conclusão</h2>
+        <p>Essas instruções foram desenvolvidas para garantir que o uso do aplicativo de simulação de portabilidade consignado seja fácil e intuitivo. Para mais detalhes, entre em contato com o suporte técnico.</p>
+    </div>
+</body>
+</html>
